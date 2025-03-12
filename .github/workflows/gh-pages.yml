@@ -14,11 +14,14 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+          target: wasm32-unknown-unknown
           override: true
       - name: Install Trunk
         run: cargo install trunk
       - name: Build
-        run: trunk build --release --public-url /geothelphusa.github.io/
+        run: cargo build --release # ここで Yew がビルドされる
+      - name: Build Web
+        run: trunk build --release --public-url /geothelphusa.github.io/ # 実質的デプロイ
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
