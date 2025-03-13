@@ -2,6 +2,7 @@
 name = "geothelphusa-github-io"
 version = "0.1.0"
 edition = "2021"
+build = "build.rs"
 
 [build-dependencies]
 horrorshow = "0.8.4"
