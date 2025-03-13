@@ -5,7 +5,7 @@ on:
     branches:
       - main # デプロイするブランチ名
 
-permissions:
+permissions: # 権限 この場合書き込み権限を与えている
   contents: write
   pages: write
 
@@ -23,14 +23,15 @@ jobs:
       - name: Install Trunk
         run: cargo install trunk
       - name: Build
-        run: cargo build --release # ここで Yew がビルドされる
+        run: cargo build --release # ここで Yew がビルドされる generate HTML template
       - name: Build Web
-        run: trunk build --release --public-url /geothelphusa.github.io/ # 実質的デプロイ
+        run: trunk build --release --public-url / # 実質的デプロイ overwrite template HTML リポジトリ名がサイトドメインなので/でOK
+      - name: Check dist directory
+        run: ls -l dist
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
           publish_branch: gh-pages
-          script: |
-            cp -r dist/* $GITHUB_WORKSPACE/gh-pages/
+          publish_dir: dist
+          force_orphan: true # `gh-pages` ブランチをリセットしてクリーンにデプロイ

@@ -1,10 +1,11 @@
 [build]
-target = "index.html"
+target = "dist" # Try include .gitignore directory 
 dist = "dist"
-public_url = "/geothelphusa.github.io/"
+# Override by yml argument public_url = "/geothelphusa.github.io/"
 
 [watch]
 watch = ["dist/", "src/"]
 
-[release]
-post_build = "cargo run --release"
+# [release]
+# post_build = "cargo run --release"
+# ^need?

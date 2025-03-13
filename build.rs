@@ -30,3 +30,6 @@ fn main() {
     let mut dist_index_html = File::create("dist/index.html").expect("Could not create `dist/index.html`.");
     writeln!(dist_index_html, "{html}").expect("Could not write to `dist/index.html`.");
 }
+
+// This build main function is generating HTML templates.
+// trunk command use HTML in root directory.
