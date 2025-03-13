@@ -1,5 +1,5 @@
 [build]
-target = "dist/index.html"
+target = "index.html"
 dist = "dist"
 public_url = "/geothelphusa.github.io/"
 
