@@ -9,13 +9,11 @@ fn main() {
         : doctype::HTML;
         html(lang="ja", data-theme="dim") {
             head {
-                meta(name="viewport", content="width=device-width, initial-scale=1.0");
-                title : "Geothelphusa.github.io";
-                // link(data-trunk rel="rust" href="/Cargo.toml");
+                meta(charset="utf-8");
+                title : "draft";
+                link(data-trunk, rel="rust", href="Cargo.toml");
             }
-            body(class="flex flex-col min-h-screen") {
-                div(id="app")
-            }
+            body { }
         }
     };
 

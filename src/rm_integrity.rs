@@ -1,5 +1,6 @@
 use std::fs;
 use regex::Regex;
+use log::debug;
 
 pub fn remove_integrity_attribute() -> Result<(), Box<dyn std::error::Error>> {
     let html_files = fs::read_dir("dist")?
@@ -16,6 +17,6 @@ pub fn remove_integrity_attribute() -> Result<(), Box<dyn std::error::Error>> {
         let new_content = re.replace_all(&content, "");
         fs::write(&file_path_buf, new_content.as_bytes())?;
     }
-// log::debug!("Integrity attribute removed successfully.");
+    debug!("Integrity attribute removed successfully.");
     Ok(())
 }

@@ -10,3 +10,10 @@ horrorshow = "0.8.4"
 [dependencies]
 regex = "1.11.1"
 yew = { version = "0.21", features = ["csr"] }
+log = "0.4.26"
+web-sys = "0.3.77"
+
+
+# [[bin]]  # `cargo run --release --bin update_index` で実行される
+# name = "update_index"
+# path = "src/update_index.rs"  # 実行するRustファイルのパス
