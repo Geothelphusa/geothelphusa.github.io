@@ -5,6 +5,9 @@ use std::io::Write;
 use std::fs;
 
 fn main() {
+const FAVICON_PATH: &str = "./static/Geothelphusa.jpeg";
+    let favicon_path = FAVICON_PATH;
+    
     let html = html! {
         : doctype::HTML;
         html(lang="ja", data-theme="dim") {
@@ -12,6 +15,7 @@ fn main() {
                 meta(charset="utf-8");
                 title : "Geothelphusa";
                 link(data-trunk, rel="rust", href="Cargo.toml");
+                link(rel="icon", href=favicon_path);
             }
             body { }
         }
