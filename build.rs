@@ -5,7 +5,7 @@ use std::io::Write;
 use std::fs;
 
 fn main() {
-const FAVICON_PATH: &str = "./static/Geothelphusa.jpeg";
+const FAVICON_PATH: &str = "https://raw.githubusercontent.com/Geothelphusa/geothelphusa.github.io/refs/heads/main/static/Geothelphusa.jpeg";
     let favicon_path = FAVICON_PATH;
     
     let html = html! {

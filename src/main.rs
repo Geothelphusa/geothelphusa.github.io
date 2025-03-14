@@ -6,16 +6,8 @@ use crate::styles::*;
 
 #[styled_component(App)]
 fn app() -> Html {
-const LOGO_PATH: &str = "./static/Geothelphusa.jpeg";
+const LOGO_PATH: &str = "https://raw.githubusercontent.com/Geothelphusa/geothelphusa.github.io/refs/heads/main/static/Geothelphusa.jpeg";
     let logo_path = LOGO_PATH;
-    let counter = use_state(|| 0);
-    let onclick = {
-        let counter = counter.clone();
-        move |_| {
-            let value = *counter + 1;
-            counter.set(value);
-        }
-    };
 
     // モードの状態を保持する変数(初期値はライトモード)
     let dark_mode = use_state(|| false);
@@ -45,50 +37,39 @@ const LOGO_PATH: &str = "./static/Geothelphusa.jpeg";
     };
 
     html! {
-        <global class={classes!(base_styles())}>
-            <main class={main_classes}>
-                <h1>{"Welcome to Geothelphusa site !"}</h1>
-
-                <div class={classes!(center_styles())}>
-                <a href="https://github.com/Geothelphusa">
-                    <img src={logo_path}/>
-                </a>
-                </div>
-
-                <div class={classes!(center_styles())}>
-                <img src="./static/Geothelphusa.jpeg"/>
-                </div>
-
-
+        <html lang="ja" class={classes!(base_styles())}>
+            <head>
+                <title>{"Geothelphusa"}</title>
+            </head>
+            <body>
                 <div>
-                <button {onclick}>{ "+1" }</button>
-                <p>{ *counter }</p>
+                    <nav class={classes!(nav_styles())}>
+                        <ul class={css!("display: flex;")}>
+                          <li class={classes!(li_none())}><a class={classes!(menu_items())} href="#">{"HOME"}</a></li>
+                          <li class={classes!(li_none())}><a class={classes!(menu_items())} href="#">{"SERVICE"}</a></li>
+                          <li class={classes!(li_none())}><a class={classes!(menu_items())} href="#">{"NEWS"}</a></li>
+                          <li class={classes!(li_none())}><a class={classes!(menu_items())} href="#">{"BLOG"}</a></li>
+                          <li class={classes!(li_none())}><a class={classes!(menu_items())} href="#">{"CONTACT"}</a></li>
+                        </ul>
+                        <button class={classes!(input_and_button())} type="submit" onclick={toggle_light}>{"Toggle Light Mode"}</button>
+                        <button class={classes!(input_and_button())} type="submit" onclick={toggle_dark}>{"Toggle Dark Mode"}</button>
+                    </nav>
+                    <main class={main_classes}>
+                        <div class={classes!(center_styles())}>
+                            <a href="https://github.com/Geothelphusa">
+                                <img class={classes!(title_logo())} src={logo_path}/>
+                            </a>
+                        </div>
+
+                        <h1>{"Welcome to Geothelphusa site !"}</h1>
+                        <div class={classes!(center_styles())}>
+                            
+                        </div>
+                        <p>{if *dark_mode {"Dark Mode"} else {"Light Mode"}}</p>
+                    </main>
                 </div>
-
-                // <div class={classes!(row_styles())}>
-                    // <a class={classes!(a_tag())} href="https://tauri.app" target="_blank">
-                    //     <img src="public/tauri.svg" class={classes!(logo())} alt="Tauri logo"/>
-                    // </a>
-                    // <a class={classes!(a_tag())} href="https://yew.rs" target="_blank">
-                    //     <img src="public/yew.png" class={classes!(logo())} alt="Yew logo"/>
-                    // </a>
-
-                // </div>
-                // <p class={classes!(center_styles())}>{"Click on the Tauri and Yew logos to learn more."}</p>
-
-                // <form class={classes!(row_styles())} onsubmit={greet}>
-                //     <input class={classes!(input_and_button())} id={classes!(greet_input())} ref={greet_input_ref} placeholder="Enter a name..." />
-                //     <button class={classes!(input_and_button())} type="submit">{"Greet"}</button>
-                // </form>
-                // <p>{&*greet_msg}</p>
-
-                <div class={classes!(center_styles())}>
-                <button class={classes!(input_and_button())} type="submit" onclick={toggle_light}>{"Toggle Light Mode"}</button>
-                <button class={classes!(input_and_button())} type="submit" onclick={toggle_dark}>{"Toggle Dark Mode"}</button>               </div>
-                <p>{if *dark_mode {"Dark Mode"} else {"Light Mode"}}</p>
-            </main>
-        </global>
-        
+            </body>
+        </html>
     }
 }
 
