@@ -10,7 +10,7 @@ fn main() {
         html(lang="ja", data-theme="dim") {
             head {
                 meta(charset="utf-8");
-                title : "draft";
+                title : "Geothelphusa";
                 link(data-trunk, rel="rust", href="Cargo.toml");
             }
             body { }

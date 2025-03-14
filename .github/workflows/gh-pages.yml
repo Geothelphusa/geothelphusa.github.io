@@ -25,15 +25,9 @@ jobs:
       - name: Build
         run: cargo build --release --target wasm32-unknown-unknown # ここで Yew がビルドされる generate HTML template
       - name: Build Web
-        run: trunk build --release  # 実質的デプロイ overwrite template HTML リポジトリ名がサイトドメインなので/でOK
-#      - name: Update index.html with correct JS file
-#        run: cargo run --release --bin update_index
-#      - name: Rename to app.js
-#        run: mv dist/geothelphusa-github-io-*.js dist/app.js
+        run: trunk build --release  # 実質的デプロイ overwrite template HTML 引数があると正常に動きません
       - name: Check dist directory
         run: ls -l dist
-#      - name: Delete integrity
-#        run: sed -i 's/integrity="[^"]*"//g' dist/index.html
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
