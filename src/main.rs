@@ -37,11 +37,7 @@ const LOGO_PATH: &str = "https://raw.githubusercontent.com/Geothelphusa/geothelp
     };
 
     html! {
-        <html lang="ja" class={classes!(base_styles())}>
-            <head>
-                <title>{"Geothelphusa"}</title>
-            </head>
-            <body>
+            <body class={classes!(base_styles())}>
                 <div>
                     <nav class={classes!(nav_styles())}>
                         <ul class={css!("display: flex;")}>
@@ -69,7 +65,6 @@ const LOGO_PATH: &str = "https://raw.githubusercontent.com/Geothelphusa/geothelp
                     </main>
                 </div>
             </body>
-        </html>
     }
 }
 
