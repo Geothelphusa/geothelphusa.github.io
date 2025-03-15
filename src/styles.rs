@@ -63,7 +63,7 @@ pub fn container_styles() -> Style {
           padding-top: 10vh;
           display: flex;
           flex-direction: column;
-          justify-content: center;
+          justify-content: top;
           text-align: center;
       "#
   ))
@@ -80,23 +80,23 @@ pub fn container_styles() -> Style {
 //   .unwrap()
 // }
 
-pub fn input_and_button() -> Style {
-  Style::new(css!(
-      r#"
-          border-radius: 8px;
-          border: 1px solid transparent;
-          padding: 0.6em 1.2em;
-          font-size: 1em;
-          font-weight: 500;
-          font-family: inherit;
-          color: #0f0f0f;
-          background-color: #ffffff;
-          transition: border-color 0.25s;
-          box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-          outline: none;
-      "#
-  )).unwrap()
-}
+// pub fn input_and_button() -> Style {
+//   Style::new(css!(
+//       r#"
+//           border-radius: 8px;
+//           border: 1px solid transparent;
+//           padding: 0.6em 1.2em;
+//           font-size: 1em;
+//           font-weight: 500;
+//           font-family: inherit;
+//           color: #0f0f0f;
+//           background-color: #ffffff;
+//           transition: border-color 0.25s;
+//           box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+//           outline: none;
+//       "#
+//   )).unwrap()
+// }
 
 // pub fn fit_picture() -> Style {
 //   Style::new(css!(
@@ -148,3 +148,53 @@ pub fn li_none() -> Style {
       "#
   )).unwrap()
 }
+
+pub fn toggle_button() -> Style {
+  Style::new(css!(
+      r#"
+            position: relative;
+            display: flex;
+            width: 56px;
+            height: 28px;
+            border: 1px solid #555555;
+            border-radius: 9999px;
+            background-color: #dddddd;
+            cursor: pointer;
+
+          :has(:focus-visible) {
+            outline: auto;
+            outline: auto -webkit-focus-ring-color;
+          }
+
+      "#
+  )).unwrap()
+}
+
+pub fn toggle_slider() -> Style {
+  Style::new(css!(
+      r#"
+          
+            appearance: none;
+            position: absolute;
+            top: 40%;
+            left: 0px;
+            width: 24px;
+            height: 24px;
+            border: 1px solid #555555;
+            border-radius: 9999px;
+            transform: translateY(-50%);
+            outline: none;
+            background-color: #ffffff;
+            transition: left 0.2s;
+            cursor: pointer;
+          
+
+          :checked {
+            left: calc(100% - 32px);
+            background-color: #4ade80;
+          }
+      "#
+  )).unwrap()
+}
+
+

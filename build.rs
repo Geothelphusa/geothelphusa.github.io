@@ -16,6 +16,7 @@ const FAVICON_PATH: &str = "https://raw.githubusercontent.com/Geothelphusa/geoth
                 title : "Geothelphusa";
                 link(data-trunk, rel="rust", href="Cargo.toml");
                 link(rel="icon", href=favicon_path);
+                meta(name="viewport", content="width=device-width, initial-scale=1"); // viewportメタタグを追加
                 style {
                     : "body { margin: 0; padding: 0; } "; // Chromeの余白を消すためのスタイル
                 }
