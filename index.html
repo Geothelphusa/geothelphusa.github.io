@@ -1,0 +1,12 @@
+<!DOCTYPE html><html lang="ja" data-theme="dim"><head><meta charset="utf-8"><title>Geothelphusa</title>
+<script type="module">
+import init, * as bindings from '/geothelphusa-github-io-1880a92cbb64edf.js';
+const wasm = await init({ module_or_path: '/geothelphusa-github-io-1880a92cbb64edf_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script><link rel="icon" href="https://raw.githubusercontent.com/Geothelphusa/geothelphusa.github.io/refs/heads/main/static/Geothelphusa.jpeg"><style>body { margin: 0; padding: 0; } </style><link rel="modulepreload" href="/geothelphusa-github-io-1880a92cbb64edf.js" crossorigin="anonymous" integrity="sha384-sb96LPvUrE4bGNIRamGRhfUGsT5EqHmAGfB358IdtOjYG/2sPLvKyZGGXOgrtev1"><link rel="preload" href="/geothelphusa-github-io-1880a92cbb64edf_bg.wasm" crossorigin="anonymous" integrity="sha384-U7kVwt5edl7E990aLVj5VxJJb8f6cc7hC73NDhahNy5LJiBwRnfFRjxHo+E7IL0T" as="fetch" type="application/wasm"></head><body></body></html>
