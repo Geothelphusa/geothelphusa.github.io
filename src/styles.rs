@@ -70,48 +70,21 @@ pub fn container_styles() -> Style {
   .unwrap()
 }
 
-// pub fn row_styles() -> Style {
-//   Style::new(css!(
-//       r#"
-//           display: flex;
-//           justify-content: center;
-//       "#
-//   ))
-//   .unwrap()
-// }
-
-// pub fn input_and_button() -> Style {
-//   Style::new(css!(
-//       r#"
-//           border-radius: 8px;
-//           border: 1px solid transparent;
-//           padding: 0.6em 1.2em;
-//           font-size: 1em;
-//           font-weight: 500;
-//           font-family: inherit;
-//           color: #0f0f0f;
-//           background-color: #ffffff;
-//           transition: border-color 0.25s;
-//           box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-//           outline: none;
-//       "#
-//   )).unwrap()
-// }
-
-// pub fn fit_picture() -> Style {
-//   Style::new(css!(
-//       r#"
-//           width: 100%;
-//           height: auto;
-//       "#
-//   )).unwrap()
-// }
 
 pub fn title_logo() -> Style {
   Style::new(css!(
       r#"
           width: 500px;
           height: 500px;
+          max-width: 100%;
+          max-height: 100%;
+
+          @media (max-width: 768px) { /* 768px以下（スマホなど）の場合 width/height は 3/4 にする */
+              width: 300px;
+              height: 300px;
+              max-width: 75%;
+              max-height: 100%;
+          }
       "#
   )).unwrap()
 }
@@ -119,13 +92,17 @@ pub fn title_logo() -> Style {
 pub fn nav_styles() -> Style {
   Style::new(css!(
       r#"
+          position: fixed;
+          top: 0;
+          left: 0;
           width: 100%;
-          height: 70px;
-          background-color: dimgray;
-          padding-top: 5px;
-          box-sizing: border-box;
+          height: 100px; /* 画面上端まで拡張 */
+          background: #2f2f2f;
           display: flex;
-          list-style: none;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 20px;
+          z-index: 100;
       "#
   )).unwrap()
 }
@@ -135,24 +112,21 @@ pub fn menu_items() -> Style {
       r#"
           display: block;
           text-decoration: none;
-          color: white;
+          color: black;
           margin-right: 35px;
       "#
   )).unwrap()
 }
 
-pub fn li_none() -> Style {
-  Style::new(css!(
-      r#"
-          list-style: none;
-      "#
-  )).unwrap()
-}
 
 pub fn toggle_button() -> Style {
   Style::new(css!(
-      r#"
-            position: relative;
+      r#"   
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            z-index: 150;
+            
             display: flex;
             width: 56px;
             height: 28px;
@@ -191,10 +165,75 @@ pub fn toggle_slider() -> Style {
 
           :checked {
             left: calc(100% - 32px);
-            background-color: #4ade80;
+            background-color: #2f2f2f;
           }
       "#
   )).unwrap()
 }
 
+pub fn overlay_style() -> Style {
+  Style::new(css!(
+  r#"
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8); /* 透明度を少し暗めに */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* 中央配置 */
+        align-items: center; /* 中央配置 */
+        z-index: 200; /* nav より前面に */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
 
+        &.is-opened {
+            opacity: 1;
+            visibility: visible;
+        }
+  "#
+))
+.unwrap()
+}
+
+pub fn menu_style() -> Style {
+  Style::new(css!(
+  r#"
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        align-items: center;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+        z-index: 201;
+
+  "#
+))
+.unwrap()
+}
+
+
+pub fn menu_list_style() -> Style {
+  Style::new(css!(
+      r#"
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      "#
+  ))
+  .unwrap()
+}
