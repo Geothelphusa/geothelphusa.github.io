@@ -1,14 +1,14 @@
+use crate::webhook;
+
 use gloo_net::http::Request;
-use std::env;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
-fn get_webhook_url() -> String {
-    env::var("WEBHOOK_URL").unwrap_or_else(|_| {
-        panic!("WEBHOOK_URL environment variable not set")
-    })
+fn get_webhook_url() -> &'static str {
+    webhook::WEBHOOK_URL
 }
+
 #[function_component(Contact)]
 pub fn contact() -> Html {
     let name = use_state(|| String::new());
@@ -18,7 +18,7 @@ pub fn contact() -> Html {
         let name = name.clone();
         let message = message.clone();
         Callback::from(move |e: SubmitEvent| {
-            e.prevent_default(); // フォームのデフォルト送信を防ぐ
+            e.prevent_default();
             let name = name.clone();
             let message = message.clone();
 
@@ -28,7 +28,8 @@ pub fn contact() -> Html {
                 let payload = serde_json::json!({
                     "content": format!("**お問い合わせ**\n**名前:** {}\n**メッセージ:** {}", *name, *message)
                 });
-                let _ = Request::post(webhook_url.as_str())
+
+                let _ = Request::post(webhook_url)
                     .header("Content-Type", "application/json")
                     .body(serde_json::to_string(&payload).unwrap())
                     .unwrap()

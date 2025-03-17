@@ -2,6 +2,7 @@ mod styles;
 mod route;
 mod components;
 mod contact;
+mod webhook;
 
 use stylist::yew::styled_component;
 use yew::{prelude::*, Renderer};
