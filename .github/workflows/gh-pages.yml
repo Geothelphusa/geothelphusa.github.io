@@ -25,7 +25,13 @@ jobs:
       - name: Build
         run: cargo build --release --target wasm32-unknown-unknown # ここで Yew がビルドされる generate HTML template
       - name: Build Web
-        run: trunk build --release  # 実質的デプロイ overwrite template HTML 引数があると正常に動きません
+        env:
+          CARGO_WEBHOOK_URL: ${{ secrets.CARGO_WEBHOOK_URL }}
+        run: |
+          echo "CARGO_WEBHOOK_URL=${CARGO_WEBHOOK_URL}" >> $GITHUB_ENV 
+          trunk build --release
+# お問い合わせページの Webhook URL を環境変数に設定
+# 実質的デプロイ overwrite template HTML 引数があると正常に動きません
       - name: Check dist directory
         run: ls -l dist
       - name: Deploy to GitHub Pages
