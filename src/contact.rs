@@ -3,11 +3,8 @@ use crate::webhook;
 use gloo_net::http::Request;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::HtmlInputElement;
+use log::error;
 use yew::prelude::*;
-
-fn get_webhook_url() -> &'static str {
-    webhook::WEBHOOK_URL
-}
 
 #[function_component(Contact)]
 pub fn contact() -> Html {
@@ -23,18 +20,21 @@ pub fn contact() -> Html {
             let message = message.clone();
 
             spawn_local(async move {
-                let webhook_url = get_webhook_url();
-
+                let webhook_url = webhook::WEBHOOK_URL; // 修正ポイント
                 let payload = serde_json::json!({
                     "content": format!("**お問い合わせ**\n**名前:** {}\n**メッセージ:** {}", *name, *message)
                 });
 
-                let _ = Request::post(webhook_url)
+                let response = Request::post(webhook_url)
                     .header("Content-Type", "application/json")
                     .body(serde_json::to_string(&payload).unwrap())
                     .unwrap()
                     .send()
                     .await;
+
+                if let Err(err) = response {
+                    error!("Failed to send webhook: {:?}", err);
+                }
             });
         })
     };
