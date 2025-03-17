@@ -35,6 +35,12 @@ const FAVICON_PATH: &str = "https://raw.githubusercontent.com/Geothelphusa/geoth
     // Create index.html in the dist directory
     let mut dist_index_html = File::create("dist/index.html").expect("Could not create `dist/index.html`.");
     writeln!(dist_index_html, "{html}").expect("Could not write to `dist/index.html`.");
+    
+    println!("cargo:rerun-if-env-changed=CARGO_WEBHOOK_URL");
+
+    if let Ok(webhook_url) = std::env::var("CARGO_WEBHOOK_URL") {
+        println!("cargo:rustc-env=WEBHOOK_URL={}", webhook_url);
+    }
 }
 
 // This build main function is generating HTML templates.

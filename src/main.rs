@@ -1,6 +1,7 @@
 mod styles;
 mod route;
 mod components;
+mod contact;
 
 use stylist::yew::styled_component;
 use yew::{prelude::*, Renderer};
@@ -8,6 +9,8 @@ use yew_router::prelude::*;
 use crate::styles::*;
 use crate::route::*;
 use crate::components::*;
+
+
 
 #[styled_component(App)]
 fn app() -> Html {
@@ -40,7 +43,7 @@ fn app() -> Html {
     html! {
         <main class={classes!(main_classes, base_styles())}>
             <div class={stylesheet}>
-                <BrowserRouter>
+                <HashRouter>
                     <nav class={classes!(nav_styles())}>
                         <MenuButton onclick={onclick_clone} is_opened={*is_menu_opened} />
                     </nav>
@@ -69,7 +72,7 @@ fn app() -> Html {
                         }}
                     </ul>
                     <Switch<Route> render={switch} />
-                </BrowserRouter>
+                </HashRouter>
     
                 // Brightness mode switch
                 <label class={classes!(toggle_button())}>

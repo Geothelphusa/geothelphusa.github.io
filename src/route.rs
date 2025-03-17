@@ -1,4 +1,6 @@
 use yew_router::prelude::*;
+use crate::contact::Contact;
+
 
 #[derive(Routable, PartialEq, Eq, Clone, Debug)]
 pub enum Route {
@@ -40,7 +42,7 @@ pub fn switch(route: Route) -> Html {
   match route {
       Route::Home => html! { <Home /> },
       Route::About => html! { <About /> },
-      Route::Contact => html! { <h1>{ "Contact Page" }</h1> },
+      Route::Contact => html! { <Contact /> },
       Route::Service => html! { <h1>{ "Service Page" }</h1> },
       Route::News => html! { <h1>{ "News Page" }</h1> },
       Route::Blog => html! { <h1>{ "Blog Page" }</h1> },

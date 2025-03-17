@@ -8,6 +8,10 @@ build = "build.rs"
 horrorshow = "0.8.4"
 
 [dependencies]
+gloo-net = "0.6.0"
+serde_json = "1.0.140"
 stylist = { version = "0.13.0", features = ["yew_integration"] }
+wasm-bindgen-futures = "0.4.50"
+web-sys = "0.3.77"
 yew = { version = "0.21", features = ["csr"] }
 yew-router = "0.18.0"
