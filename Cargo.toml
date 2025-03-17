@@ -8,6 +8,6 @@ build = "build.rs"
 horrorshow = "0.8.4"
 
 [dependencies]
-regex = "1.11.1"
 stylist = { version = "0.13.0", features = ["yew_integration"] }
 yew = { version = "0.21", features = ["csr"] }
+yew-router = "0.18.0"
