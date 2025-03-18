@@ -3,8 +3,6 @@ use horrorshow::html;
 use std::fs::File;
 use std::io::Write;
 use std::fs;
-use std::env;
-use std::path::Path;
 
 fn main() {
 const FAVICON_PATH: &str = "https://raw.githubusercontent.com/Geothelphusa/geothelphusa.github.io/refs/heads/main/static/Geothelphusa.jpeg";
@@ -38,23 +36,6 @@ const FAVICON_PATH: &str = "https://raw.githubusercontent.com/Geothelphusa/geoth
     let mut dist_index_html = File::create("dist/index.html").expect("Could not create `dist/index.html`.");
     writeln!(dist_index_html, "{html}").expect("Could not write to `dist/index.html`.");
     
-    println!("cargo:rerun-if-env-changed=CARGO_WEBHOOK_URL");
-
-    // `CARGO_WEBHOOK_URL` 環境変数を取得
-    let webhook_url = env::var("CARGO_WEBHOOK_URL").expect("CARGO_WEBHOOK_URL not set");
-
-    // `WEBHOOK_URL` をコンパイル時に埋め込む
-    println!("cargo:rustc-env=WEBHOOK_URL={}", webhook_url);
-
-    // `OUT_DIR` のパスを取得
-    let out_dir = env::var("OUT_DIR").unwrap();
-    let dest_path = Path::new(&out_dir).join("webhook.rs");
-
-    // `webhook.rs` の内容を生成
-    let content = format!(r#"pub const WEBHOOK_URL: &str = "{}";"#, webhook_url);
-
-    // `webhook.rs` を作成
-    fs::write(dest_path, content).expect("Failed to write webhook.rs");
 }
 
 // This build main function is generating HTML templates.

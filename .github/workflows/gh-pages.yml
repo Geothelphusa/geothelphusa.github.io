@@ -22,8 +22,6 @@ jobs:
           override: true
       - name: Install Trunk
         run: cargo install trunk
-      - name: Set up Webhook URL
-        run: echo "CARGO_WEBHOOK_URL=${CARGO_WEBHOOK_URL}" >> $GITHUB_ENV # お問い合わせページの Webhook URL を環境変数に設定
       - name: Build
         run: cargo build --release --target wasm32-unknown-unknown # ここで Yew がビルドされる generate HTML template
       - name: Build Web

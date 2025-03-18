@@ -1,8 +1,6 @@
 mod styles;
 mod route;
 mod components;
-mod contact;
-mod webhook;
 
 use stylist::yew::styled_component;
 use yew::{prelude::*, Renderer};
@@ -60,7 +58,6 @@ fn app() -> Html {
                                                 (Route::Service, "SERVICE"),
                                                 (Route::News, "NEWS"),
                                                 (Route::Blog, "BLOG"),
-                                                (Route::Contact, "CONTACT"),
                                             ].into_iter().map(|(route, label)| html! {
                                                 <li><Link<Route> to={route} classes={classes!(menu_items())}>{ label }</Link<Route>></li>
                                             }) }
