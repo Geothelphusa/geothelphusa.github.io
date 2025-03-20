@@ -1,6 +1,8 @@
 mod styles;
 mod route;
 mod components;
+mod home;
+mod about;
 
 use stylist::yew::styled_component;
 use yew::{prelude::*, Renderer};
@@ -9,14 +11,10 @@ use crate::styles::*;
 use crate::route::*;
 use crate::components::*;
 
-
-
 #[styled_component(App)]
-fn app() -> Html {
+pub fn app() -> Html {
 
     let stylesheet = responsive_styles();
-
-    let logo_path = LOGO_PATH;
 
     let is_menu_opened = use_state(|| false);
 
@@ -27,7 +25,7 @@ fn app() -> Html {
 
     let onclick_clone = onclick.clone();
 
-        // Brightness mode handling (init:dark)
+    // Brightness mode handling (init:dark)
     let dark_mode = use_state(|| true);
     let dark_mode_clone = dark_mode.clone();
 
@@ -53,8 +51,8 @@ fn app() -> Html {
                                     <div class={classes!(menu_style())} onclick={Callback::from(|e: MouseEvent| e.stop_propagation())}>
                                         <ul class={classes!(menu_list_style())}>
                                             { for vec![
-                                                (Route::About, "ABOUT"),
                                                 (Route::Home, "HOME"),
+                                                (Route::About, "ABOUT"),
                                                 (Route::Service, "SERVICE"),
                                                 (Route::News, "NEWS"),
                                                 (Route::Blog, "BLOG"),
@@ -81,17 +79,6 @@ fn app() -> Html {
                         checked={*dark_mode}
                     />  
                 </label>
-    
-                // main containts
-                <div class={classes!(center_styles())}>
-                    <a href="https://github.com/Geothelphusa">
-                        <img class={classes!(title_logo())} src={logo_path}/>
-                    </a>
-                </div>
-                <h1>{"Welcome to Geothelphusa site !"}</h1>
-                <div class={classes!(center_styles())}>
-                    <p class={css!("align-items:flex-end;")}>{ if *dark_mode { "Dark" } else { "Light" } }</p>
-                </div>
             </div>
         </main>
     }
