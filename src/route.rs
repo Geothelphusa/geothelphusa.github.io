@@ -1,7 +1,7 @@
 use yew_router::prelude::*;
 use crate::home::*;
 use crate::about::*;
-
+use crate::blog::*;
 
 #[derive(Routable, PartialEq, Eq, Clone, Debug)]
 pub enum Route {
@@ -33,7 +33,7 @@ pub fn switch(route: Route) -> Html {
       Route::About => html! { <About /> },
       Route::Service => html! { <h1>{ "Service Page" }</h1> },
       Route::News => html! { <h1>{ "News Page" }</h1> },
-      Route::Blog => html! { <h1>{ "Blog Page" }</h1> },
+      Route::Blog => html! { <Blog /> },
       Route::NotFound => html! { <NotFound /> },
   }
 }

@@ -87,7 +87,7 @@ pub fn container_styles() -> Style {
       r#"
           margin: 0;
           
-          padding-top: 10vh;
+          padding-top: 5vh;
           display: flex;
           flex-direction: column;
           justify-content: top;
@@ -297,6 +297,58 @@ pub fn menu_button_style() -> Style {
       &.is-opened::after {
           transform: translateY(-8px) rotate(-45deg);
       }
+      "#
+  ))
+  .unwrap()
+}
+
+pub fn link_card_style() -> Style {
+  Style::new(css!(
+      r#"
+        width: 45%;
+        box-sizing: border-box;
+        background-color: #fff;
+        border: 1px solid gray;
+        border-radius: 8px;
+        margin: 0;
+        padding: 10px;
+        .link-card {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 10px;
+            align-items: center;
+            text-decoration: none;
+        }
+        .link-card-image img {
+            width: 200%;
+            height: auto;
+            object-fit: cover;
+            text-align: left;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+        .link-card-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .link-card-title {
+            font-weight: bold;
+            margin: 0;
+        }
+        .link-card-description {
+            margin: 5px 0;
+            white-space: nowrap;
+        }
+        .link-card-domain {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+        .link-card-domain img {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+        }
       "#
   ))
   .unwrap()
