@@ -31,6 +31,7 @@ pub fn center_styles() -> Style {
   Style::new(css!(
       r#"
           justify-content: center;
+          display: flex;
           text-align: center;
       "#
   ))
@@ -312,6 +313,7 @@ pub fn link_card_style() -> Style {
         border-radius: 8px;
         margin: 0;
         padding: 10px;
+
         .link-card {
             display: grid;
             grid-template-columns: 100px 1fr;
@@ -320,7 +322,7 @@ pub fn link_card_style() -> Style {
             text-decoration: none;
         }
         .link-card-image img {
-            width: 200%;
+            width: 150%;
             height: auto;
             object-fit: cover;
             text-align: left;
