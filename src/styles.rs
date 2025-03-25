@@ -30,8 +30,7 @@ pub fn responsive_styles() -> Style {
 pub fn center_styles() -> Style {
   Style::new(css!(
       r#"
-          justify-content: center;
-          display: flex;
+          justify-content: center;     
           text-align: center;
       "#
   ))
@@ -350,6 +349,11 @@ pub fn link_card_style() -> Style {
             width: 16px;
             height: 16px;
             margin-right: 5px;
+        }
+        @media screen and ( max-width:768px ) { 
+            display: block;
+            margin: 0 auto;
+            width: 90%;
         }
       "#
   ))

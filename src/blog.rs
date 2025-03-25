@@ -10,7 +10,7 @@ pub fn blog() -> Html {
         <main>
             <div class={classes!(container_styles(), center_styles())}>
               <h1>{"Blog"}</h1>
-              <div id="html-part" class={classes!(link_card_style())}>
+              <div id="html-part" class={classes!(link_card_style())} > 
                 <a class="link-card" href="https://gist.github.com/YoshitakaNaraoka/9c1b9a03f76e54d4038b4321dcf62114" rel="noopener noreferrer">
                   <div class="link-card-content">
                     <div class="link-card-image" id="grid-content-1">
@@ -21,6 +21,7 @@ pub fn blog() -> Html {
                       <p class="link-card-description">{"Geothelphusa philosophy in Japanese"}</p>
                       <div class="link-card-domain">
                         <img id="favicon-image-code" src="https://github.githubassets.com/favicons/favicon.svg" />
+                        <p>{"Placeless"}</p>
                       </div>
                     </div>
                   </div>
