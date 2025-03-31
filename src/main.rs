@@ -4,6 +4,7 @@ mod components;
 mod home;
 mod about;
 mod blog;
+mod service;
 
 use stylist::yew::styled_component;
 use yew::{prelude::*, Renderer};
